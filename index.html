@@ -399,19 +399,19 @@ transition-all sci-fi-font">
         <h1 class="game-font text-6xl text-blue-400 mb-2 tracking-tighter glow-text">SPACE ESCAPE</h1>
         <p class="sci-fi-font text-xs text-blue-200/60 mb-10 tracking-[0.3em]">MISSION CONTROL SYSTEM</p>
         <div class="grid grid-cols-1 gap-4">
-            <button onclick="initGame('7A')" class="group relative bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/50 text-blue-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
+            <button onclick="startGame('7A')" class="group relative bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/50 text-blue-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
                 <span class="relative z-10">INITIATE MISSION: 7A</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
-            <button onclick="initGame('7B')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
+            <button onclick="startGame('7B')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
                 <span class="relative z-10">INITIATE MISSION: 7B</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
-            <button onclick="initGame('7C')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
+            <button onclick="startGame('7C')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
                 <span class="relative z-10">INITIATE MISSION: 7C</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
-            <button onclick="initGame('7D')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
+            <button onclick="startGame('7D')" class="group relative bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-400 font-bold py-5 rounded-2xl transition-all sci-fi-font overflow-hidden">
                 <span class="relative z-10">INITIATE MISSION: 7D</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
@@ -823,4 +823,39 @@ function endSession() {
             setTimeout(() => toast.remove(), 500);
         }, 1200);
     }
+    
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+
+    if (!document.fullscreenElement) {
+
+        document.documentElement.requestFullscreen()
+            .then(() => {
+                fullscreenBtn.innerHTML = '✕';
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+    } else {
+
+        document.exitFullscreen();
+
+        fullscreenBtn.innerHTML = '⛶';
+
+    }
+}
+
+async function startGame(className) {
+
+    if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+    }
+
+    initGame(className);
+}
+</script>
 </script>
