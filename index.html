@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Escape: Mission Probability</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#020617">
+    <title>Space Escape: Mission Aljabar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Bangers&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -82,10 +85,26 @@
         .compact-table td {
             padding: 0.5rem 0.75rem;
         }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 </style>
 </head>
 <body class="text-slate-100 min-h-screen overflow-hidden space-bg">
 <div class="stars-overlay"></div>
+<button id="fullscreenBtn"
+class="fixed top-4 right-4 z-[9999]
+bg-cyan-500/20 hover:bg-cyan-500/40
+border border-cyan-400/40
+text-cyan-300
+px-5 py-2 rounded-2xl
+backdrop-blur-md
+shadow-[0_0_20px_rgba(34,211,238,0.3)]
+transition-all sci-fi-font">
+⛶
+</button>
 
 <script>
     const questionBank = {
